@@ -12,3 +12,5 @@ Postman collection for Coins Public API, including spot, convert, fiat, wallet,e
   
 3.If use invoice api, pls set 'invoice_apikey', 'invoice_secret'
 
+4.If use subAccount api, pls set 'subApiKey', 'subSecret'
+
