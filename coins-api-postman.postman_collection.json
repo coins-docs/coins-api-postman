@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "29453bce-1ab8-4d31-8de2-5cdc60e551a0",
-		"name": "coins-api-postman",
+		"_postman_id": "5330aa4c-57a6-4921-828d-1b39aea70c7f",
+		"name": "coins-api-postman Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21400165"
 	},
@@ -1479,12 +1479,13 @@
 									"str = str.replaceAll(\",\",\"&\");",
 									"host = pm.environment.get(\"host\");",
 									"signStr= timestamp+host+path+str",
-									"let signature = CryptoJS.HmacSHA256(signStr,pm.environment.get(\"invoice_secret\"));",
+									"let signature = CryptoJS.HmacSHA256(signStr,pm.environment.get(\"merchant_secret\"));",
 									"signature = CryptoJS.enc.Hex.stringify(signature);",
 									"pm.environment.set(\"sign\", signature);",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -1493,7 +1494,7 @@
 						"header": [
 							{
 								"key": "X-Merchant-Key",
-								"value": "{{invoice_apikey}}",
+								"value": "{{merchant_apikey}}",
 								"type": "text"
 							},
 							{
@@ -1561,12 +1562,13 @@
 									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
 									"host = pm.environment.get(\"host\");",
 									"signStr= timestamp+host+path+\"?\"+param",
-									"let signature = CryptoJS.HmacSHA256(signStr,pm.environment.get(\"invoice_secret\"));",
+									"let signature = CryptoJS.HmacSHA256(signStr,pm.environment.get(\"merchant_secret\"));",
 									"signature = CryptoJS.enc.Hex.stringify(signature);",
 									"pm.environment.set(\"sign\", signature);",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -1575,7 +1577,7 @@
 						"header": [
 							{
 								"key": "X-Merchant-Key",
-								"value": "{{invoice_apikey}}",
+								"value": "{{merchant_apikey}}",
 								"type": "text"
 							},
 							{
@@ -1636,12 +1638,13 @@
 									"str = str.replaceAll(\",\",\"&\");",
 									"host = pm.environment.get(\"host\");",
 									"signStr= timestamp+host+path+str",
-									"let signature = CryptoJS.HmacSHA256(signStr,pm.environment.get(\"invoice_secret\"));",
+									"let signature = CryptoJS.HmacSHA256(signStr,pm.environment.get(\"merchant_secret\"));",
 									"signature = CryptoJS.enc.Hex.stringify(signature);",
 									"pm.environment.set(\"sign\", signature);",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -1650,7 +1653,7 @@
 						"header": [
 							{
 								"key": "X-Merchant-Key",
-								"value": "{{invoice_apikey}}",
+								"value": "{{merchant_apikey}}",
 								"type": "text"
 							},
 							{
