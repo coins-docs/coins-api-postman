@@ -4,7 +4,7 @@ A comprehensive Postman collection for Coins Public API, including spot trading,
 
 ## 📋 API Modules Overview
 
-This Postman collection contains 11 main modules with complete API coverage:
+This Postman collection contains 12 main modules with complete API coverage:
 
 ### 1. Spot Trading
 - **My Trades** (`myTrades`) - Query user's trading history
@@ -29,6 +29,12 @@ This Postman collection contains 11 main modules with complete API coverage:
 - **Details** (`details`) - Get fiat order details
 - **History** (`history`) - Query fiat transaction history
 - **Cash Out** (`cash_out`) - Execute fiat withdrawal operations
+- **Generate QR Code** (`generate_qr_code`) - Generate payment QR codes
+- **Generate Static QR Code** (`generate_ static_qr_code`) - Generate static QR codes
+- **Cancel QR Code** (`cancel_qr_code`) - Cancel existing QR codes
+- **Update QR Code** (`update_qr_code`) - Update QR code status
+- **Get QR Code** (`get_qr_code`) - Retrieve QR code information
+- **Get QR Code Static List** (`get_qr_code_ static_list`) - Get static QR code list
 
 ### 4. General
 - **Exchange Info** (`exchangeInfo`) - Get exchange basic information
@@ -94,6 +100,9 @@ This Postman collection contains 11 main modules with complete API coverage:
 - **IP Restriction** (`ip-restriction`) - Get IP restrictions
 - **Add IP Restriction** (`add-ip-restriction`) - Add IP restrictions
 - **Delete IP Restriction** (`delete-ip-restriction`) - Delete IP restrictions
+- **Collect from Sub Account** (`collect-from-subaccount`) - Collect funds from sub-accounts
+- **Get Fund Record** (`get-fund-record`) - Query fund collection records
+
 
 ## 🚀 Quick Start
 
@@ -156,6 +165,15 @@ Check response status codes and error messages for troubleshooting. Common issue
 ## 📚 API Documentation
 
 For detailed API documentation, please refer to the official Coins API documentation.
+
+## 📝 Recent Updates
+
+### Latest Version (2025-01-08)
+- Updated Postman collection with latest API endpoints
+- Added comprehensive QR Code management APIs in Fiat module
+- Enhanced Sub Account module with fund collection features
+- Improved documentation with detailed endpoint descriptions
+- Updated environment variable references
 
 ## 🤝 Contributing
 
