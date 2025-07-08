@@ -1406,7 +1406,7 @@
 					"response": []
 				},
 				{
-					"name": "generate_ static_qr_code",
+					"name": "generate_static_qr_code",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1656,7 +1656,7 @@
 					"response": []
 				},
 				{
-					"name": "get_qr_code_ static_list",
+					"name": "get_qr_code_static_list",
 					"event": [
 						{
 							"listen": "prerequest",

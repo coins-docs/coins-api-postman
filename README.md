@@ -30,11 +30,11 @@ This Postman collection contains 12 main modules with complete API coverage:
 - **History** (`history`) - Query fiat transaction history
 - **Cash Out** (`cash_out`) - Execute fiat withdrawal operations
 - **Generate QR Code** (`generate_qr_code`) - Generate payment QR codes
-- **Generate Static QR Code** (`generate_ static_qr_code`) - Generate static QR codes
+- **Generate Static QR Code** (`generate_static_qr_code`) - Generate static QR codes
 - **Cancel QR Code** (`cancel_qr_code`) - Cancel existing QR codes
 - **Update QR Code** (`update_qr_code`) - Update QR code status
 - **Get QR Code** (`get_qr_code`) - Retrieve QR code information
-- **Get QR Code Static List** (`get_qr_code_ static_list`) - Get static QR code list
+- **Get QR Code Static List** (`get_qr_code_static_list`) - Get static QR code list
 
 ### 4. General
 - **Exchange Info** (`exchangeInfo`) - Get exchange basic information
