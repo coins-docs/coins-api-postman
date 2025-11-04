@@ -168,7 +168,15 @@ For detailed API documentation, please refer to the official Coins API documenta
 
 ## 📝 Recent Updates
 
-### Latest Version (2025-01-08)
+### Latest Version (2025-11-04)
+- 🔄 Synchronized latest API endpoints and configurations
+- ✨ Updated request parameters and signature scripts for all modules
+- 📦 Optimized Postman collection structure
+- 🐛 Fixed parameter configuration issues for some endpoints
+- 📝 Enhanced signature generation logic in pre-request scripts
+- 🚀 Improved overall collection reliability and maintainability
+
+### Previous Version (2025-01-08)
 - Updated Postman collection with latest API endpoints
 - Added comprehensive QR Code management APIs in Fiat module
 - Enhanced Sub Account module with fund collection features
