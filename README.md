@@ -41,6 +41,8 @@ This Postman collection contains 12 main modules with complete API coverage:
 - **Pairs** (`pairs`) - Get all available trading pairs
 - **Ping** (`ping`) - Test API connectivity
 - **Time** (`time`) - Get server current time
+- **User IP** (`userIP`) - Get user's current IP address
+- **Check System Status** (`check-sys-status`) - Check system and business type status
 
 ### 5. Invoice
 - **Create Invoice** (`invoices`) - Create new payment invoices
@@ -88,6 +90,8 @@ This Postman collection contains 12 main modules with complete API coverage:
 - **Deposit History** (`deposit_history`) - Query deposit history
 - **Withdraw History** (`withdraw_history`) - Query withdrawal history
 - **Withdraw Apply** (`withdraw_apply`) - Apply for withdrawals
+- **Transaction History** (`transaction_history`) - Query transaction history
+- **Address Whitelist** (`address_withlist`) - Get withdrawal address whitelist
 
 ### 12. Sub Account
 - **Create** (`create`) - Create sub-accounts
