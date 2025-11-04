@@ -269,10 +269,12 @@
 									"str = str.replace(\"&signature={{sign}}\",\"\");",
 									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
 									"signature = CryptoJS.enc.Hex.stringify(signature);",
-									"pm.environment.set(\"sign\", signature);"
+									"pm.environment.set(\"sign\", signature);",
+									""
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -283,17 +285,23 @@
 								"key": "X-COINS-APIKEY",
 								"value": "{{apikey}}",
 								"type": "text"
+							},
+							{
+								"key": "timestamp",
+								"value": "{{timestamp}}",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?symbol=&side=buy&type=limit&timeInForce=&quantity=1&quoteOrderQty=&price=100&newClientOrderId=&stopPrice=&newOrderRespType=&stpFlag=&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
+							"raw": "{{host}}{{path}}?symbol=BTCPHP&side=buy&type=limit&timeInForce=&quantity=1&quoteOrderQty=&price=2144328.6&newClientOrderId=&stopPrice=&newOrderRespType=&stpFlag=&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "BTCPHP"
 								},
 								{
 									"key": "side",
@@ -317,7 +325,7 @@
 								},
 								{
 									"key": "price",
-									"value": "100"
+									"value": "2144328.6"
 								},
 								{
 									"key": "newClientOrderId",
@@ -865,7 +873,9 @@
 									"pm.environment.set(\"sign\", signature);",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -879,22 +889,22 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?sourceCurrency=PHP&targetCurrency=BTC&sourceAmount=200&recvWindow&timestamp={{timestamp}}&signature={{sign}}",
+							"raw": "{{host}}{{path}}?sourceCurrency=BTC&targetCurrency=THB&sourceAmount=0.01&recvWindow&timestamp={{timestamp}}&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "sourceCurrency",
-									"value": "PHP"
-								},
-								{
-									"key": "targetCurrency",
 									"value": "BTC"
 								},
 								{
+									"key": "targetCurrency",
+									"value": "THB"
+								},
+								{
 									"key": "sourceAmount",
-									"value": "200"
+									"value": "0.01"
 								},
 								{
 									"key": "recvWindow",
@@ -933,7 +943,9 @@
 									"pm.environment.set(\"sign\", signature);",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -947,14 +959,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?quoteId=58eb6038b6e348faaac6ebc22b7bdff3&timestamp={{timestamp}}&signature={{sign}}",
+							"raw": "{{host}}{{path}}?quoteId=20365126043206668805convert&timestamp={{timestamp}}&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "quoteId",
-									"value": "58eb6038b6e348faaac6ebc22b7bdff3"
+									"value": "20365126043206668805convert"
 								},
 								{
 									"key": "timestamp",
@@ -1255,7 +1267,8 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"var str_requestBody= pm.request.body.raw   ",
+									"var str_requestBody= pm.request.body.raw",
+									"console.log(str_requestBody)   ",
 									"let signatureBody = str_requestBody",
 									"let timestamp = (new Date()).getTime().toString();",
 									"let path = \"openapi/fiat/v1/cash-out\";",
@@ -1270,7 +1283,8 @@
 									""
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1286,11 +1300,16 @@
 								"key": "timestamp",
 								"value": "{{timestamp}}",
 								"type": "text"
+							},
+							{
+								"key": "signature",
+								"value": "{{signature}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"internalOrderId\":\"1212323211\",\"currency\":\"PHP\",\"amount\":\"50\",\"channelName\":\"SWIFTPAY_PESONET\",\"channelSubject\":\"gcash\",\"extendInfo\":{\"recipientName\":\"sandyopenapitest\",\"recipientAccountNumber\":\"123456789\"}}",
+							"raw": "{\"internalOrderId\":\"1212323211\",\"currency\":\"PHP\",\"amount\":\"50\",\"channelName\":\"SWIFTPAY_PESONET\",\"channelSubject\":\"gcash\",\"extendInfo\":{\"recipientName\":\"sandy openapitest\",\"recipientAccountNumber\":\"123456789\"}}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1298,19 +1317,20 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}{{path}}?signature={{signature}}",
+							"raw": "{{host}}{{path}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "{{body}}",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}"
+									"value": "{{signature}}",
+									"disabled": true
 								}
 							]
 						}
@@ -1351,14 +1371,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?requestId=3117066961997366&type=&source=test&amount=200&currency=PHP&remark=&expiredSeconds=1800&qrCodeMerchantName=tester&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
+							"raw": "{{host}}{{path}}?requestId=3515677961797368&type=&source=test&amount=200&currency=PHP&remark=&expiredSeconds=1800&qrCodeMerchantName=tester&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "requestId",
-									"value": "3117066961997366"
+									"value": "3515677961797368"
 								},
 								{
 									"key": "type",
@@ -1406,7 +1426,7 @@
 					"response": []
 				},
 				{
-					"name": "generate_static_qr_code",
+					"name": "generate_ static_qr_code",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1439,14 +1459,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?requestId=3117066961997466&source=testsource&currency=PHP&remark=testremark&qrCodeMerchantName=testqrname&subMerchantId=1970978906832207370&timestamp={{timestamp}}&signature={{sign}}",
+							"raw": "{{host}}{{path}}?requestId=3118168251888811&source=testsource&currency=PHP&remark=testremark&qrCodeMerchantName=testqrname&timestamp={{timestamp}}&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "requestId",
-									"value": "3117066961997466"
+									"value": "3118168251888811"
 								},
 								{
 									"key": "source",
@@ -1466,7 +1486,8 @@
 								},
 								{
 									"key": "subMerchantId",
-									"value": "1970978906832207370"
+									"value": "1970978906832207370",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1656,7 +1677,7 @@
 					"response": []
 				},
 				{
-					"name": "get_qr_code_static_list",
+					"name": "get_qr_code_ static_list",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1894,6 +1915,69 @@
 							"raw": "{{host}}{{path}}",
 							"host": [
 								"{{host}}{{path}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-sys-status",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let path = \"openapi/v1/check-sys-status\";",
+									"let timestamp = new Date().getTime().toString();",
+									"pm.environment.set(\"path\",path)",
+									"pm.environment.set(\"timestamp\",timestamp);",
+									"let bodyJson = request.data;",
+									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
+									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
+									"str = str.replace(\"&signature={{sign}}\",\"\");",
+									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
+									"signature = CryptoJS.enc.Hex.stringify(signature);",
+									"pm.environment.set(\"sign\", signature);",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-COINS-APIKEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}{{path}}?businessType=&recvWindow&timestamp={{timestamp}}&signature={{sign}}",
+							"host": [
+								"{{host}}{{path}}"
+							],
+							"query": [
+								{
+									"key": "businessType",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{sign}}"
+								}
 							]
 						}
 					},
@@ -2649,10 +2733,17 @@
 									"console.log(str)",
 									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
 									"signature = CryptoJS.enc.Hex.stringify(signature);",
-									"pm.environment.set(\"sign\", signature);"
+									"pm.environment.set(\"sign\", signature);",
+									"// 签名后需要encode参数值",
+									"const templateReg = /\\{\\{[\\w\\-\\.]+\\}\\}/;",
+									"pm.request.url.query = pm.request.url.query.map(item => ({",
+									"    ...item,",
+									"    value: templateReg.test(item.value) ? item.value : encodeURIComponent(item.value)",
+									"}));"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -2666,22 +2757,22 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?account=1451431230880900352&amount=1232&target_address=christina@coins.ph&client_transfer_id=&message=&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
+							"raw": "{{host}}{{path}}?account=USDT&amount=2&target_address=john.zhang+1@coins.ph&client_transfer_id=&message=&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "account",
-									"value": "1451431230880900352"
+									"value": "USDT"
 								},
 								{
 									"key": "amount",
-									"value": "1232"
+									"value": "2"
 								},
 								{
 									"key": "target_address",
-									"value": "christina@coins.ph"
+									"value": "john.zhang+1@coins.ph"
 								},
 								{
 									"key": "client_transfer_id",
@@ -4015,6 +4106,76 @@
 								},
 								{
 									"key": "pageSize",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{sign}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "address_withlist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let path = \"openapi/wallet/v1/withdraw/address-whitelist\";",
+									"let timestamp = new Date().getTime().toString();",
+									"pm.environment.set(\"path\",path)",
+									"pm.environment.set(\"timestamp\",timestamp);",
+									"let bodyJson = request.data;",
+									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
+									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
+									"str = str.replace(\"&signature={{sign}}\",\"\");",
+									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
+									"signature = CryptoJS.enc.Hex.stringify(signature);",
+									"pm.environment.set(\"sign\", signature);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-COINS-APIKEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}{{path}}?coin&network&address&recvWindow&timestamp={{timestamp}}&signature={{sign}}",
+							"host": [
+								"{{host}}{{path}}"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": null
+								},
+								{
+									"key": "network",
+									"value": null
+								},
+								{
+									"key": "address",
+									"value": null
+								},
+								{
+									"key": "recvWindow",
 									"value": null
 								},
 								{
