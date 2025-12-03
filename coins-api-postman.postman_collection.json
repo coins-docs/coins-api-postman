@@ -676,6 +676,121 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "order_cancelReplace",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let path = \"openapi/v1/order/cancelReplace\";",
+									"let timestamp = new Date().getTime().toString();",
+									"pm.environment.set(\"path\",path)",
+									"pm.environment.set(\"timestamp\",timestamp);",
+									"let bodyJson = request.data;",
+									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
+									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
+									"str = str.replace(\"&signature={{sign}}\",\"\");",
+									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
+									"signature = CryptoJS.enc.Hex.stringify(signature);",
+									"pm.environment.set(\"sign\", signature);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-COINS-APIKEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}{{path}}?symbol=XRPPHP&side=buy&type=limit&timeInForce=&quantity=1&quoteOrderQty=&price=100&newClientOrderId=&stopPrice=&newOrderRespType=&stpFlag=&cancelOrderId=1615113400395785984&cancelReplaceMode=ALLOW_FAILURE&cancelRestrictions&cancelOrigClientOrderId&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
+							"host": [
+								"{{host}}{{path}}"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "XRPPHP"
+								},
+								{
+									"key": "side",
+									"value": "buy"
+								},
+								{
+									"key": "type",
+									"value": "limit"
+								},
+								{
+									"key": "timeInForce",
+									"value": ""
+								},
+								{
+									"key": "quantity",
+									"value": "1"
+								},
+								{
+									"key": "quoteOrderQty",
+									"value": ""
+								},
+								{
+									"key": "price",
+									"value": "100"
+								},
+								{
+									"key": "newClientOrderId",
+									"value": ""
+								},
+								{
+									"key": "stopPrice",
+									"value": ""
+								},
+								{
+									"key": "newOrderRespType",
+									"value": ""
+								},
+								{
+									"key": "stpFlag",
+									"value": ""
+								},
+								{
+									"key": "cancelOrderId",
+									"value": "1615113400395785984"
+								},
+								{
+									"key": "cancelReplaceMode",
+									"value": "ALLOW_FAILURE"
+								},
+								{
+									"key": "cancelRestrictions",
+									"value": null
+								},
+								{
+									"key": "cancelOrigClientOrderId",
+									"value": null
+								},
+								{
+									"key": "recvWindow",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{sign}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

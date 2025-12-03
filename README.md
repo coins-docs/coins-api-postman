@@ -16,6 +16,7 @@ This Postman collection contains 12 main modules with complete API coverage:
 - **Cancel Order** (`order_cancel`) - Cancel specific orders
 - **Cancel All Orders** (`order_cancelAll`) - Cancel all open orders
 - **Order History** (`order_history`) - Query historical orders
+- **Cancel Replace Order** (`order_cancelReplace`) - Cancel and replace orders in a single atomic operation
 
 ### 2. Convert
 - **Get Supported Trading Pairs** (`get-supported-trading-pairs`) - Query supported conversion pairs
@@ -181,7 +182,7 @@ For detailed API documentation, please refer to the official Coins API documenta
   - `history V2` in Fiat module with external order ID support
   - `api_keys` in Wallet module for API key information query
   - `wallet-deposit-address` and `wallet-deposit-history` in Sub Account module
-- 🗑️ Removed deprecated `order_cancelReplace` endpoint from Spot Trading module
+  - `order_cancelReplace` in Spot Trading module for atomic cancel and replace operations
 - 📦 Optimized Postman collection structure and parameter handling
 - 🐛 Fixed parameter configuration issues for Fiat history endpoint
 - 📝 Enhanced signature generation logic with URL encoding support for sub-account creation
