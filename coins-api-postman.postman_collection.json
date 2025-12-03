@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "29453bce-1ab8-4d31-8de2-5cdc60e551a0",
+		"_postman_id": "38112635-579f-473b-b9c3-49bb5e6e9984",
 		"name": "coins-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21400165"
@@ -676,121 +676,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "order_cancelReplace",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"let path = \"openapi/v1/order/cancelReplace\";",
-									"let timestamp = new Date().getTime().toString();",
-									"pm.environment.set(\"path\",path)",
-									"pm.environment.set(\"timestamp\",timestamp);",
-									"let bodyJson = request.data;",
-									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
-									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
-									"str = str.replace(\"&signature={{sign}}\",\"\");",
-									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
-									"signature = CryptoJS.enc.Hex.stringify(signature);",
-									"pm.environment.set(\"sign\", signature);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-COINS-APIKEY",
-								"value": "{{apikey}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{host}}{{path}}?symbol=XRPPHP&side=buy&type=limit&timeInForce=&quantity=1&quoteOrderQty=&price=100&newClientOrderId=&stopPrice=&newOrderRespType=&stpFlag=&cancelOrderId=1615113400395785984&cancelReplaceMode=ALLOW_FAILURE&cancelRestrictions&cancelOrigClientOrderId&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
-							"host": [
-								"{{host}}{{path}}"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "XRPPHP"
-								},
-								{
-									"key": "side",
-									"value": "buy"
-								},
-								{
-									"key": "type",
-									"value": "limit"
-								},
-								{
-									"key": "timeInForce",
-									"value": ""
-								},
-								{
-									"key": "quantity",
-									"value": "1"
-								},
-								{
-									"key": "quoteOrderQty",
-									"value": ""
-								},
-								{
-									"key": "price",
-									"value": "100"
-								},
-								{
-									"key": "newClientOrderId",
-									"value": ""
-								},
-								{
-									"key": "stopPrice",
-									"value": ""
-								},
-								{
-									"key": "newOrderRespType",
-									"value": ""
-								},
-								{
-									"key": "stpFlag",
-									"value": ""
-								},
-								{
-									"key": "cancelOrderId",
-									"value": "1615113400395785984"
-								},
-								{
-									"key": "cancelReplaceMode",
-									"value": "ALLOW_FAILURE"
-								},
-								{
-									"key": "cancelRestrictions",
-									"value": null
-								},
-								{
-									"key": "cancelOrigClientOrderId",
-									"value": null
-								},
-								{
-									"key": "recvWindow",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{sign}}"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -1192,7 +1077,8 @@
 									"pm.environment.set(\"sign\", signature);"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1206,7 +1092,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?pageNum=1&pageSize=10&internalOrderId=&transactionType=&transactionChannel=&transactionSubject=&status=&fiatCurrency=&startDate=2024-07-02T13:48:16.000+00:00&endDate=2024-07-03T13:48:16.000+00:00&signature={{sign}}",
+							"raw": "{{host}}{{path}}?pageNum=1&pageSize=10&internalOrderId=&transactionType=&transactionChannel=&transactionSubject=&status=&fiatCurrency=&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
@@ -1245,11 +1131,108 @@
 								},
 								{
 									"key": "startDate",
-									"value": "2024-07-02T13:48:16.000+00:00"
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endDate",
-									"value": "2024-07-03T13:48:16.000+00:00"
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "signature",
+									"value": "{{sign}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "history V2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let path = \"openapi/fiat/v2/history\";",
+									"let timestamp = new Date().getTime().toString();",
+									"pm.environment.set(\"path\",path)",
+									"pm.environment.set(\"timestamp\",timestamp);",
+									"let bodyJson = request.data;",
+									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
+									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
+									"str = str.replace(\"&signature={{sign}}\",\"\");",
+									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
+									"signature = CryptoJS.enc.Hex.stringify(signature);",
+									"pm.environment.set(\"sign\", signature);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-COINS-APIKEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}{{path}}?pageNum=1&pageSize=10&externalOrderId&internalOrderId=&transactionType=&transactionChannel=&transactionSubject=&status=&fiatCurrency=&signature={{sign}}",
+							"host": [
+								"{{host}}{{path}}"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								},
+								{
+									"key": "externalOrderId",
+									"value": null
+								},
+								{
+									"key": "internalOrderId",
+									"value": ""
+								},
+								{
+									"key": "transactionType",
+									"value": ""
+								},
+								{
+									"key": "transactionChannel",
+									"value": ""
+								},
+								{
+									"key": "transactionSubject",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "fiatCurrency",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "signature",
@@ -4190,6 +4173,64 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "api_keys",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let path = \"openapi/v1/api-keys\";",
+									"let timestamp = new Date().getTime().toString();",
+									"pm.environment.set(\"path\",path)",
+									"pm.environment.set(\"timestamp\",timestamp);",
+									"let bodyJson = request.data;",
+									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
+									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
+									"str = str.replace(\"&signature={{sign}}\",\"\");",
+									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
+									"signature = CryptoJS.enc.Hex.stringify(signature);",
+									"pm.environment.set(\"sign\", signature);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-COINS-APIKEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}{{path}}?recvWindow&timestamp={{timestamp}}&signature={{sign}}",
+							"host": [
+								"{{host}}{{path}}"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{sign}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -4214,10 +4255,18 @@
 									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
 									"signature = CryptoJS.enc.Hex.stringify(signature);",
 									"console.log(signature)",
-									"pm.environment.set(\"sign\", signature);"
+									"pm.environment.set(\"sign\", signature);",
+									"",
+									"// The parameter value needs to be encoded after signing.",
+									"const templateReg = /\\{\\{[\\w\\-\\.]+\\}\\}/;",
+									"pm.request.url.query = pm.request.url.query.map(item => ({",
+									"    ...item,",
+									"    value: templateReg.test(item.value) ? item.value : encodeURIComponent(item.value)",
+									"}));"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -4231,18 +4280,18 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?accountName=randalle.02.10.2025@mailinator.com&recv_window&timestamp={{timestamp}}&signature={{sign}}",
+							"raw": "{{host}}{{path}}?accountName=pete_1234+@zed.co&recv_window=&timestamp={{timestamp}}&signature={{sign}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
 							"query": [
 								{
 									"key": "accountName",
-									"value": "randalle.02.10.2025@mailinator.com"
+									"value": "pete_1234+@zed.co"
 								},
 								{
 									"key": "recv_window",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5013,6 +5062,170 @@
 								{
 									"key": "size",
 									"value": null
+								},
+								{
+									"key": "signature",
+									"value": "{{sign}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet-deposit-address",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let path = \"openapi/v1/sub-account/wallet/deposit/address\";",
+									"let timestamp = new Date().getTime().toString();",
+									"pm.environment.set(\"path\",path)",
+									"pm.environment.set(\"timestamp\",timestamp);",
+									"let bodyJson = request.data;",
+									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
+									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
+									"str = str.replace(\"&signature={{sign}}\",\"\");",
+									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
+									"signature = CryptoJS.enc.Hex.stringify(signature);",
+									"pm.environment.set(\"sign\", signature);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-COINS-APIKEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}{{path}}?email=john.sub1@coins.ph&coin=USDT&network=BSC&recvWindow=&timestamp={{timestamp}}&signature={{sign}}",
+							"host": [
+								"{{host}}{{path}}"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "john.sub1@coins.ph"
+								},
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "network",
+									"value": "BSC"
+								},
+								{
+									"key": "recvWindow",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{sign}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet-deposit-history",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let path = \"openapi/v1/sub-account/wallet/deposit/history\";",
+									"let timestamp = new Date().getTime().toString();",
+									"pm.environment.set(\"path\",path)",
+									"pm.environment.set(\"timestamp\",timestamp);",
+									"let bodyJson = request.data;",
+									"let param = request.url.substr(request.url.indexOf(\"?\")+1,request.url.length-1)",
+									"str = param.replace(\"{{timestamp}}\",pm.environment.get(\"timestamp\"));",
+									"str = str.replace(\"&signature={{sign}}\",\"\");",
+									"let signature = CryptoJS.HmacSHA256(str,pm.environment.get(\"secret\"));",
+									"signature = CryptoJS.enc.Hex.stringify(signature);",
+									"pm.environment.set(\"sign\", signature);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-COINS-APIKEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}{{path}}?email=john.sub1@coins.ph&coin=USDT&txId=&depositId&startTime&endTIme&limit&offset&recvWindow=&status&timestamp={{timestamp}}&signature={{sign}}",
+							"host": [
+								"{{host}}{{path}}"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "john.sub1@coins.ph"
+								},
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "txId",
+									"value": ""
+								},
+								{
+									"key": "depositId",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTIme",
+									"value": null
+								},
+								{
+									"key": "limit",
+									"value": null
+								},
+								{
+									"key": "offset",
+									"value": null
+								},
+								{
+									"key": "recvWindow",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
 								},
 								{
 									"key": "signature",

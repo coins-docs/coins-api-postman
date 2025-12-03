@@ -16,7 +16,6 @@ This Postman collection contains 12 main modules with complete API coverage:
 - **Cancel Order** (`order_cancel`) - Cancel specific orders
 - **Cancel All Orders** (`order_cancelAll`) - Cancel all open orders
 - **Order History** (`order_history`) - Query historical orders
-- **Cancel Replace Order** (`order_cancelReplace`) - Cancel and replace orders
 
 ### 2. Convert
 - **Get Supported Trading Pairs** (`get-supported-trading-pairs`) - Query supported conversion pairs
@@ -27,7 +26,8 @@ This Postman collection contains 12 main modules with complete API coverage:
 ### 3. Fiat
 - **Support Channel** (`support-channel`) - Query supported fiat channels
 - **Details** (`details`) - Get fiat order details
-- **History** (`history`) - Query fiat transaction history
+- **History** (`history`) - Query fiat transaction history (V1)
+- **History V2** (`history V2`) - Query fiat transaction history with external order ID support (V2)
 - **Cash Out** (`cash_out`) - Execute fiat withdrawal operations
 - **Generate QR Code** (`generate_qr_code`) - Generate payment QR codes
 - **Generate Static QR Code** (`generate_static_qr_code`) - Generate static QR codes
@@ -92,6 +92,7 @@ This Postman collection contains 12 main modules with complete API coverage:
 - **Withdraw Apply** (`withdraw_apply`) - Apply for withdrawals
 - **Transaction History** (`transaction_history`) - Query transaction history
 - **Address Whitelist** (`address_withlist`) - Get withdrawal address whitelist
+- **API Keys** (`api_keys`) - Query API key information
 
 ### 12. Sub Account
 - **Create** (`create`) - Create sub-accounts
@@ -106,6 +107,8 @@ This Postman collection contains 12 main modules with complete API coverage:
 - **Delete IP Restriction** (`delete-ip-restriction`) - Delete IP restrictions
 - **Collect from Sub Account** (`collect-from-subaccount`) - Collect funds from sub-accounts
 - **Get Fund Record** (`get-fund-record`) - Query fund collection records
+- **Wallet Deposit Address** (`wallet-deposit-address`) - Get sub-account wallet deposit address
+- **Wallet Deposit History** (`wallet-deposit-history`) - Query sub-account wallet deposit history
 
 
 ## 🚀 Quick Start
@@ -172,7 +175,19 @@ For detailed API documentation, please refer to the official Coins API documenta
 
 ## 📝 Recent Updates
 
-### Latest Version (2025-11-04)
+### Latest Version (2025-12-03)
+- 🔄 Synchronized latest API endpoints and configurations
+- ✨ Added new endpoints:
+  - `history V2` in Fiat module with external order ID support
+  - `api_keys` in Wallet module for API key information query
+  - `wallet-deposit-address` and `wallet-deposit-history` in Sub Account module
+- 🗑️ Removed deprecated `order_cancelReplace` endpoint from Spot Trading module
+- 📦 Optimized Postman collection structure and parameter handling
+- 🐛 Fixed parameter configuration issues for Fiat history endpoint
+- 📝 Enhanced signature generation logic with URL encoding support for sub-account creation
+- 🚀 Improved overall collection reliability and maintainability
+
+### Version (2025-11-04)
 - 🔄 Synchronized latest API endpoints and configurations
 - ✨ Updated request parameters and signature scripts for all modules
 - 📦 Optimized Postman collection structure
